@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+## NFT-MarketPlace
+A marketplace app exclusively for buying and selling digital products such as photos, videos, audio, and other file formats with non-fungible tokens (NFTs).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
+> Include: React App with Semantic UI, MongoDB<br />
+> Product models will include author, product type, year created, token value, description, and availability<br />
+> A list of routes: 
+/index - landing page 
+/index/:id - show page for specific asset
+/login - login or sign up page
+/account/:id - specific account page with ongoing/won bids
+/about - info about NFTs<br />
 
-## Available Scripts
+## Wireframes
+> Wireframes with basic page layouts (Final site will be done through Semantic UI)<br />
+<img width="1375" alt="Screen Shot 2021-11-30 at 7 23 13 PM" src="https://media.git.generalassemb.ly/user/36955/files/0e55c100-5213-11ec-9ed1-3721e3ca26f5">
+<img width="1336" alt="Screen Shot 2021-11-30 at 7 57 03 PM" src="https://media.git.generalassemb.ly/user/36955/files/c1281e00-5217-11ec-96b0-f907b8116796">
 
-In the project directory, you can run:
+## User Stories
+> As a digital consumer, I want access to a database of digital assets, so I can purchase assets securely with NFTs.
+> As an artist, I want access to a database of digital art, so that I can add my own artwork and sell it.
+> As an art collector, I want online access to digital art, so that I maintain and add to my collection.
 
-### `npm start`
+### MVP Goals
+> Ability to create, edit, and delete your digital assets in the database
+> Optional auction functionality for assets
+> Access to an account to buy and sell assets
+> Professional level UI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Stretch Goals
+> Alchemy NFT API for Web3 blockchain integration
+> Ubiquity: A high performance, multi-chain API for accessing blockchain data
