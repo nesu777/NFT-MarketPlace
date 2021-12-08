@@ -16,10 +16,10 @@ export default class HeaderMain extends Component{
     return( 
   <div className='ui fluid container'>
   <Header as='h1' color='yellow' >
-    <Icon color='grey' name='ethereum' />
+    <Icon color='yellow' name='ethereum' />
     <Header.Content>NFT Base</Header.Content> {/*nft 'home base' idea*/}
-    <Segment color='yellow' inverted>
-  <Menu color='yellow' inverted fluid widths={6} pointing tertiary>
+    <Segment inverted>
+  <Menu fluid widths={6} inverted pointing secondary>
     <Menu.Item
       as={NavLink} to="/"
       name='Home'
