@@ -58,9 +58,12 @@ export default class HeaderMain extends Component{
       as={NavLink}
       to="/login"
       name='Login/SignUp'
+      content={<Icon color='yellow' size='large' name='user circle' />}
       active={activeItem === 'login'}
       onClick={this.handleItemClick}
-    />
+        >
+        Login/SignUp
+    </Menu.Item>
   </Menu>
   </Segment>
   </Header>
