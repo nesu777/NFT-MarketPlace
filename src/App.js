@@ -17,7 +17,7 @@ class App extends Component {
         <Segment color='black' inverted style={{ margin: '0em 0em 0em', padding: '2em 0em' }}>
         <HeaderMain />
         </Segment>
-        <Segment inverted color='blue' tertiary style={{ margin: '0em 0em 0em', padding: '5em 0em' }}>
+        <Segment inverted color='blue' tertiary style={{ margin: '0em 0em 0em', padding: '5em 0em 0em' }}>
         <Routes>
         <Route
           path="/"
@@ -55,9 +55,9 @@ class App extends Component {
           <HomePage />}
         />
       </Routes>
-
-      </Segment>
       <Footer />
+      </Segment>
+      
       </Router> 
     </div>  
     </>

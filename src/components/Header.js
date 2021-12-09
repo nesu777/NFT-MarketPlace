@@ -13,9 +13,10 @@ export default class HeaderMain extends Component{
   render(){
     const { activeItem } = this.state
 
-    return( 
+    return(
+  <div className='content' sticky='onTop'>   
   <div className='ui fluid container'>
-  <Header as='h1' color='yellow' >
+  <Header as='h1' inverted>
     <Icon color='yellow' name='ethereum' />
     <Header.Content>NFT Base</Header.Content> {/*nft 'home base' idea*/}
     <Segment inverted>
@@ -67,6 +68,7 @@ export default class HeaderMain extends Component{
   </Menu>
   </Segment>
   </Header>
+  </div>
   </div>
 )
 }

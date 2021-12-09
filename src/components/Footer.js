@@ -4,14 +4,14 @@ import { Segment, Container, Grid, Header, List, Divider, Icon } from 'semantic-
 export default class Footer extends Component{
   render(){
     return( 
-  <div className='content'sticky='onBottom'>
+  <div className='content' sticky='onBottom'>
   <Segment color='grey' inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
       <Container textAlign='center'>
         <Grid divided inverted stackable>
           <Grid.Column width={3}>
             <Header inverted as='h4' content='Payments' />
             <List link inverted>
-              <List.Item as='a'>VISA/Mastercard</List.Item>
+              <List.Item as='a'>MetaMask</List.Item>
               <List.Item as='a'>PayPal</List.Item>
             </List>
           </Grid.Column>
