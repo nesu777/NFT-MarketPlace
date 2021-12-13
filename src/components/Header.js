@@ -50,9 +50,9 @@ export default class HeaderMain extends Component{
     />
     <Menu.Item 
       as={NavLink}
-      to="/support"
-      name='Support'
-      active={activeItem === 'support'}
+      to="/dashboard"
+      name='Dashboard'
+      active={activeItem === 'dashboard'}
       onClick={this.handleItemClick}
     />
     <Menu.Item 

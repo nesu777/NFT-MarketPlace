@@ -4,6 +4,11 @@ import { Segment } from 'semantic-ui-react'
 import HeaderMain from './components/Header'
 import Footer from './components/Footer'
 import HomePage from './components/HomePage'
+import Featured from './components/Featured'
+import AllAssets from './components/AllAssets'
+import AboutUs from './components/AboutUs'
+import Dashboard from './components/Dashboard'
+import Login from './components/Login'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 class App extends Component {
@@ -28,31 +33,31 @@ class App extends Component {
         <Route
           path="/allassets"
           element={
-          <HomePage />}
+          <AllAssets />}
         />
 
         <Route
           path="/featured"
           element={
-          <HomePage />}
+          <Featured />}
         />
 
          <Route
           path="/aboutus"
           element={
-          <HomePage />}
+          <AboutUs />}
         />
 
         <Route
-          path="/support"
+          path="/dashboard"
           element={
-          <HomePage />}
+          <Dashboard />}
         />
 
         <Route
           path="/login"
           element={
-          <HomePage />}
+          <Login />}
         />
       </Routes>
       <Footer />
