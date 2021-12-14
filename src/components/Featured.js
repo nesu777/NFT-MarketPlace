@@ -11,17 +11,18 @@ render(){
 			{/*<br/><br/>*/}
 			<Item key='{asset.id}'>
       			<Item.Content>
-      				<Segment raised inverted>
-        			<Item.Header as='h1'>Imperial Astronaut</Item.Header>
-        			<Item.Image src='astronaut_nft.png' size='huge' fluid/>
-        			<Item.Header as='h2' color='blue'>27 WETH ($103,321) for 1 edition<Icon name='ethereum' color='blue'/>
-        			<br/><br/>
-        			<Button color='yellow'>Bid</Button>
-        			<Button className='ui tertiary button'>Watch Bid<Icon name='star' color='yellow' /></Button>
+      				<Segment raised inverted padded='very'>
+        			<Item.Header as='h1'><Icon name='ethereum' color='yellow'/>Imperial Astronaut</Item.Header>
+        			<Item.Image centered src='astronaut_nft.png' size='huge' fluid/>
+        			<Item.Header as='h2' color='blue'>27 WETH ($103,321) for 1 edition
+        			<Item.Header as='h3'>Creator: Beeple</Item.Header>
+        			<br/>
+        			<Button color='yellow' inverted>Bid</Button>
+        			<Button className='ui tertiary button'>Watch Bid <Icon name='star' color='yellow' /></Button>
         			<br/><br/>
         			</Item.Header>
         			<Divider />
-        			<Item.Meta as='h3'><strong>Creator: Beeple</strong></Item.Meta>
+        			<Item.Meta as='h3'>(11) <Icon name='heart' color='red'/><strong>Likes</strong></Item.Meta>
         			<Item.Description>
           			</Item.Description>
         			</Segment>
