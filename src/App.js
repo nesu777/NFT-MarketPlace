@@ -190,7 +190,7 @@ class App extends Component {
         <Segment inverted color='blue' tertiary style={{ margin: '0em 0em 0em', padding: '5em 0em 0em' }}>
         <Routes>
         <Route
-          path="/"
+          path="/home"
           element={
           <HomePage />}
         />

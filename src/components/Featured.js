@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Item, Container, Divider, Segment, Icon } from 'semantic-ui-react'
+import { Item, Container, Divider, Segment, Icon, Button } from 'semantic-ui-react'
 
 //Show Page Component
 
@@ -12,12 +12,12 @@ render(){
 			<Item key='{asset.id}'>
       			<Item.Content>
       				<Segment raised inverted>
-        			<Item.Header as='h1'>Future Battle</Item.Header>
+        			<Item.Header as='h1'>Imperial Astronaut</Item.Header>
         			<Item.Image src='astronaut_nft.png' size='huge' fluid/>
         			<Item.Header as='h2' color='blue'>27 WETH ($103,321) for 1 edition<Icon name='ethereum' color='blue'/>
         			<br/><br/>
-        			<button className='ui primary button'>Bid</button>
-        			<button className='ui tertiary button'>Watch Bid<Icon name='star' color='yellow' /></button>
+        			<Button color='yellow'>Bid</Button>
+        			<Button className='ui tertiary button'>Watch Bid<Icon name='star' color='yellow' /></Button>
         			<br/><br/>
         			</Item.Header>
         			<Divider />

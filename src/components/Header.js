@@ -19,10 +19,10 @@ export default class HeaderMain extends Component{
   <Header as='h1' inverted>
     <Icon color='yellow' name='ethereum' />
     <Header.Content>NFT Base</Header.Content> {/*nft 'home base' idea*/}
-    <Segment inverted>
+    <Segment inverted sticky='onTop'>
   <Menu fluid widths={6} inverted pointing secondary>
     <Menu.Item
-      as={NavLink} to="/"
+      as={NavLink} to="/home"
       name='Home'
       active={activeItem === 'home'}
       onClick={this.handleItemClick}
