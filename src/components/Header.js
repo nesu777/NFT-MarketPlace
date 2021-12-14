@@ -13,14 +13,12 @@ export default class HeaderMain extends Component{
   render(){
     const { activeItem } = this.state
 
-    return(
-  <div className='content' sticky='onTop'>   
-  <div className='ui fluid container'>
+    return( 
   <Header as='h1' inverted>
     <Icon color='yellow' name='ethereum' />
     <Header.Content>NFT Base</Header.Content> {/*nft 'home base' idea*/}
-    <Segment inverted sticky='onTop'>
-  <Menu fluid widths={6} inverted pointing secondary>
+  <Segment inverted>
+  <Menu fluid widths={7} inverted pointing secondary>
     <Menu.Item
       as={NavLink} to="/home"
       name='Home'
@@ -58,18 +56,16 @@ export default class HeaderMain extends Component{
     <Menu.Item 
       as={NavLink}
       to="/login"
-      name='Login/SignUp'
+      name='Login'
       content={<Icon color='yellow' size='large' name='user circle' />}
       active={activeItem === 'login'}
       onClick={this.handleItemClick}
         >
-        Login/SignUp
+        Login
     </Menu.Item>
   </Menu>
   </Segment>
   </Header>
-  </div>
-  </div>
 )
 }
 }

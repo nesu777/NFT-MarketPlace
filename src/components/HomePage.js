@@ -10,7 +10,7 @@ export default class HomePage extends Component{
     <Header.Content>NFT Base</Header.Content></Header>
       <Header>
         <Header.Content size='medium' align='center'style={{ margin: '1em 5em 0em', padding: '0em 2em' }}>
-          Primiere acces to the latest NFT digital assets on the market.
+          Premiere acces to the latest NFT digital assets on the market.
           Never miss a digital bid by creating an account and following
           your favorite artists.</Header.Content>
         <br />

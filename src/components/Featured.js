@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Item, Container, Divider, Segment, Icon, Button } from 'semantic-ui-react'
+import { Item, Container, Divider, Segment, Icon, Button, Header} from 'semantic-ui-react'
 
 //Show Page Component
 
@@ -9,6 +9,7 @@ render(){
 			<Container color='blue'>
 			<Segment padded='very' inverted>
 			{/*<br/><br/>*/}
+			<Header align='center' as='h1' style={{ fontSize: '3em', padding: '1em 0em' }}>Featured Art</Header>
 			<Item key='{asset.id}'>
       			<Item.Content>
       				<Segment raised inverted padded='very'>

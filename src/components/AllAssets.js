@@ -7,7 +7,7 @@ export default class AllAssets extends Component {
   render() {
     return (
     <div>
-    <Segment inverted style={{ padding: '2em 8em', margin: '0em 28.33em' }}>
+    <Segment inverted style={{ padding: '2em 8em', margin: '0em 11.2em' }}>
       <Header align='center' as='h1' style={{ fontSize: '3em', padding: '1em 0em' }}>All Assets</Header>
       <Card.Group itemsPerRow={3}>
         <Card>

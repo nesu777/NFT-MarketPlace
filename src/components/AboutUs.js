@@ -7,7 +7,6 @@ export default class AboutUs extends Component {
 render(){
 		return(
 			<Container>
-			<br/><br/>
 			<Item key='{game.id}'>
       			<Item.Content>
       				<Segment inverted raised>

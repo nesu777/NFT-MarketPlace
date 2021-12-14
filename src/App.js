@@ -187,6 +187,8 @@ class App extends Component {
         <Segment color='black' inverted style={{ margin: '0em 0em 0em', padding: '2em 0em' }}>
         <HeaderMain />
         </Segment>
+          {/*Set segment background to image of deep space */}
+        {/*<Segment style={{background-image: "astronaut_nft.png"}}>*/}  
         <Segment inverted color='blue' tertiary style={{ margin: '0em 0em 0em', padding: '5em 0em 0em' }}>
         <Routes>
         <Route

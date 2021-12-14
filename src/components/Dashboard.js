@@ -6,7 +6,7 @@ export default class Dashboard extends Component {
     return (
       <div>
 
-      <Segment style={{ padding: '0em 4em', margin: '0em 24.33em' }} vertical>
+      <Segment style={{ padding: '0em 4em', margin: '0em 8em' }} vertical>
       <Segment>
         <Grid container stackable verticalAlign='middle'>
         <Header as='h1' style={{ fontSize: '4em', padding: '1em 0em 0em' }}>
