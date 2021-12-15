@@ -188,9 +188,10 @@ class App extends Component {
         <HeaderMain />
         </Segment>
           {/*Set segment background to image of deep space */}
-        {/*<Segment style={{background-image: "astronaut_nft.png"}}>*/}  
-        <Segment inverted color='blue' tertiary style={{ margin: '0em 0em 0em', padding: '5em 0em 0em' }}>
-        <Routes>
+        {/*<Segment style={{background-image: "astronaut_nft.png"}}>*/}
+        <div class='ui segment main' style={{ margin: '0em 0em 0em', padding: '5em 0em 0em' }}>  
+{/*        <Segment inverted color='blue' tertiary style={{ margin: '0em 0em 0em', padding: '5em 0em 0em' }}>
+*/}        <Routes>
         <Route
           path="/home"
           element={
@@ -228,8 +229,8 @@ class App extends Component {
         />
       </Routes>
       <Footer />
-      </Segment>
-      
+      {/*</Segment>*/}
+      </div>
       </Router> 
     </div>  
     </>

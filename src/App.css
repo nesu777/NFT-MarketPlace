@@ -37,3 +37,9 @@
   }
 }
 
+.ui.segment.main {
+  background-image: url('treesinspace.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
