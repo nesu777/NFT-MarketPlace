@@ -4,7 +4,7 @@ import { Segment, Container, Grid, Header, List, Divider, Icon } from 'semantic-
 export default class Footer extends Component{
   render(){
     return( 
-  <div className='content' sticky='onBottom'>
+  <div className='content' sticky='onBottom' style={{ margin: '-0.1em -0.1em' }}>
   <Segment color='grey' inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
       <Container textAlign='center'>
         <Grid divided inverted stackable>
@@ -18,7 +18,7 @@ export default class Footer extends Component{
           <Grid.Column width={3}>
             <Header inverted as='h4' content='Affiliates' />
             <List link inverted>
-              <List.Item as='a'>Ethereum <Icon color='white' name='ethereum'/></List.Item>
+              <List.Item as='a'>Ethereum <Icon name='ethereum'/></List.Item>
               <List.Item as='a'>Alchemy</List.Item>
             </List>
           </Grid.Column>

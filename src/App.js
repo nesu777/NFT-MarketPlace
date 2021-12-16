@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react'
-import { Segment } from 'semantic-ui-react'
+// import { Segment } from 'semantic-ui-react'
 import HeaderMain from './components/Header'
 // import NewForm from './components/NewForm'
 import Footer from './components/Footer'
@@ -19,109 +19,213 @@ class App extends Component {
     super(props)
 
     this.state = {
-      assets: [],
-      modalOpen: false,
-      asssetToBeEdited: {},
-      name:'',
-      creator:'',
-      price:''
+      baseURL: 'https://flow-mainnet.g.alchemy.com',
+      apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
+      query: '&t=',
+      assetTitle: '',
+      searchURL: '',
+      assetsForSale: [],
+      requestOptions: {}
     }
+    // this.state = {
+    //   assets: [],
+    //   modalOpen: false,
+    //   asssetToBeEdited: {},
+    //   name:'',
+    //   creator:'',
+    //   price:''
+    // }
   }
   
-  getAssets = () => {
-    fetch(baseUrl + '/assets',{
-      credentials: 'include'
-    })
-    .then(res => {
-      if(res.status === 200) {
-        return res.json()
-      } else {
-        return []
-      }
-    }).then(data => {
-      console.log(data)
-      this.setState({ assets: data })
-    })
-  }
+  getAssets = () =>{
 
-  addAsset = (newAsset) => {
-    const copyAssets = [...this.state.assets]
-    copyAssets.push(newAsset)
     this.setState({
-      assets: copyAssets,
-    })
-  }
-
-  deleteAsset = (id) => {
-      // console.log(id)
-      fetch(baseUrl + '/assets/' + id, {
-      method: 'DELETE',
-      credentials: "include"
-    }).then( res => {
-      // console.log(res)
-      // if I checked for a 200 response code
-      const findIndex = this.state.assets.findIndex(asset => asset._id === id)
-      const copyAssets = [...this.state.assets]
-      copyAssets.splice(findIndex, 1)
-      this.setState({
-        assets: copyAssets
+      requestOptions: {
+        method: 'GET',
+        redirect: 'follow'
+      }
+    }, () => {
+      fetch("https://flow-mainnet.g.alchemy.com/" +this.state.apiKey+ "/v1/getNFTs/?owner=0x9eef2e4511390ce4&offset=0&limit=10", this.state.requestOptions)
+      .then(res => {
+        return res.json()
       })
+      .then(json => this.setState({
+        assetsForSale: json
+      }),
+      (err) => console.log(err))
     })
+  // .then(response => response.text())
+  // .then(result => this.setState({
+  //   gamesOnSale: result
+  // }))
+  // .then(console.log(this.state.gamesOnSale.map(function(item){return item})))
+  // .catch(error => console.log('error', error));
+
   }
 
-  addLike = (asset) => {
-    // console.log(holiday)
-    fetch(baseUrl + '/assets/' + asset._id, {
-      method: 'PUT',
-      body: JSON.stringify({ likes: asset.likes + 1}),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: "include"
-    }).then(res => res.json())
-    .then(resJson => {
-      // console.log(resJson)
-      const copyAssets = [...this.state.assets]
-      const findIndex = this.state.assets.findIndex(asset => asset._id === resJson._id)
-      copyAssets[findIndex].likes = resJson.likes
-      this.setState({
-        assets: copyAssets
-      })
-    })
-  }
-
-  handleSubmit = async (e) => {
+  loginUser = async (e) => {
+    console.log('loginUser')
     e.preventDefault()
-    const url = baseUrl + '/assets/' + this.state.assetToBeEdited._id
-    try{
-      const response = await fetch( url , {
-        method: 'PUT',
-        body: JSON.stringify({
-          name: e.target.name.value,
-          creator: e.target.creator.value
-        }),
+    const url = baseUrl + '/users/login'
+    const loginBody = {
+      username: e.target.username.value,
+      password: e.target.password.value
+    }
+    try {
+
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(loginBody),
         headers: {
-          'Content-Type' : 'application/json'
+          'Content-Type': 'application/json'
         },
         credentials: "include"
       })
 
-      if (response.status === 200){
-        const updatedAsset = await response.json()
-        //console.log(updatedHoliday)
-        const findIndex = this.state.assets.findIndex(asset => asset._id === updatedAsset._id)
-        const copyAssets = [...this.state.assets]
-        copyAssets[findIndex] = updatedAsset
-        this.setState({
-          assets: copyAssets,
-          modalOpen:false
-        })
+      console.log(response)
+      console.log("BODY: ",response.body)
+
+      if (response.status === 200) {
+        this.getAssets()
       }
     }
-    catch(err){
+    catch (err) {
       console.log('Error => ', err);
     }
   }
+
+  register = async (e) => {
+    e.preventDefault()
+    const url = baseUrl + '/users/signup'
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          username: e.target.username.value,
+          password: e.target.password.value
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if (response.status === 200) {
+        this.getAssets()
+      }
+    }
+    catch (err) {
+      console.log('Error => ', err);
+    }
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.setState({
+      requestOptions: {
+        method: 'GET',
+        redirect: 'follow'
+      }
+    }, () => {
+      fetch("https://flow-mainnet.g.alchemy.com/xlkp1n3yzg6xim4mwjr2byhpr0wirck7/v1/getNFTMetadata/?tokenId=" + this.state.gameTitle +"&limit=5", this.state.requestOptions)
+      .then(res => {
+        return res.json()
+      })
+      .then(json => this.setState({
+        searchResults: json,
+        gameTitle: ''
+      }),
+      (err)=>console.log(err))
+    })
+  }
+
+    getData = (data) => {
+      console.log('setting state')
+      this.setState({
+        showThisGame: data,
+      }, () => {
+        console.log(this.state.showThisAsset)
+        /*made it return to try and pass it to GameInfo*/
+        return this.state.showThisAsset
+      })
+    }
+
+  // addAsset = (newAsset) => {
+  //   const copyAssets = [...this.state.assets]
+  //   copyAssets.push(newAsset)
+  //   this.setState({
+  //     assets: copyAssets,
+  //   })
+  // }
+
+  // deleteAsset = (id) => {
+  //     // console.log(id)
+  //     fetch(baseUrl + '/assets/' + id, {
+  //     method: 'DELETE',
+  //     credentials: "include"
+  //   }).then( res => {
+  //     // console.log(res)
+  //     // if I checked for a 200 response code
+  //     const findIndex = this.state.assets.findIndex(asset => asset._id === id)
+  //     const copyAssets = [...this.state.assets]
+  //     copyAssets.splice(findIndex, 1)
+  //     this.setState({
+  //       assets: copyAssets
+  //     })
+  //   })
+  // }
+
+  // addLike = (asset) => {
+  //   // console.log(holiday)
+  //   fetch(baseUrl + '/assets/' + asset._id, {
+  //     method: 'PUT',
+  //     body: JSON.stringify({ likes: asset.likes + 1}),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     credentials: "include"
+  //   }).then(res => res.json())
+  //   .then(resJson => {
+  //     // console.log(resJson)
+  //     const copyAssets = [...this.state.assets]
+  //     const findIndex = this.state.assets.findIndex(asset => asset._id === resJson._id)
+  //     copyAssets[findIndex].likes = resJson.likes
+  //     this.setState({
+  //       assets: copyAssets
+  //     })
+  //   })
+  // }
+
+  // handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   const url = baseUrl + '/assets/' + this.state.assetToBeEdited._id
+  //   try{
+  //     const response = await fetch( url , {
+  //       method: 'PUT',
+  //       body: JSON.stringify({
+  //         name: e.target.name.value,
+  //         creator: e.target.creator.value
+  //       }),
+  //       headers: {
+  //         'Content-Type' : 'application/json'
+  //       },
+  //       credentials: "include"
+  //     })
+
+  //     if (response.status === 200){
+  //       const updatedAsset = await response.json()
+  //       //console.log(updatedHoliday)
+  //       const findIndex = this.state.assets.findIndex(asset => asset._id === updatedAsset._id)
+  //       const copyAssets = [...this.state.assets]
+  //       copyAssets[findIndex] = updatedAsset
+  //       this.setState({
+  //         assets: copyAssets,
+  //         modalOpen:false
+  //       })
+  //     }
+  //   }
+  //   catch(err){
+  //     console.log('Error => ', err);
+  //   }
+  // }
 
   handleChange = (e)=>{
    this.setState({
@@ -139,15 +243,15 @@ class App extends Component {
     })
   }
 
-  // componentDidMount() {
-  //   this.getAssets()
-  // }
+  componentDidMount() {
+    this.getAssets()
+  }
 
 
   render() {
     return (
       <>  
-      <div className='mainContainer' color='blue' tertiary>
+      <div className='mainContainer'>
       {/*<NewForm baseUrl={baseUrl} addAsset={ this.addAsset }/>
         <table>
           <tbody>
@@ -184,14 +288,9 @@ class App extends Component {
             </form>
           }*/}
         <Router>
-        <Segment color='black' inverted style={{ margin: '0em 0em 0em', padding: '2em 0em' }}>
+        <div className='ui segment main' style={{ margin: '0em 0em 0em', padding: '0em 0em 0em' }}>
         <HeaderMain />
-        </Segment>
-          {/*Set segment background to image of deep space */}
-        {/*<Segment style={{background-image: "astronaut_nft.png"}}>*/}
-        <div class='ui segment main' style={{ margin: '0em 0em 0em', padding: '5em 0em 0em' }}>  
-{/*        <Segment inverted color='blue' tertiary style={{ margin: '0em 0em 0em', padding: '5em 0em 0em' }}>
-*/}        <Routes>
+        <Routes>
         <Route
           path="/home"
           element={
@@ -229,7 +328,6 @@ class App extends Component {
         />
       </Routes>
       <Footer />
-      {/*</Segment>*/}
       </div>
       </Router> 
     </div>  

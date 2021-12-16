@@ -9,12 +9,12 @@ export default class NewForm extends Component {
     }
   }
 
-  handleChange = (event) => {
-    // console.log(event.target.value)
-    this.setState({
-      name: event.target.value
-    })
-  }
+  handleChange = (event) =>{
+        this.setState({
+            [event.target.id]: event.target.value,
+            [event.target.id]: event.target.value,
+        })
+    }
 
   handleSubmit = (event) => {
     event.preventDefault()

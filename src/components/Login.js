@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
-import { Button, Form, Grid, Header, Icon, Message, Segment } from 'semantic-ui-react'
+import { Grid, Header, Icon, Segment } from 'semantic-ui-react'
 
 export default class Login extends Component {
+
+  constructor(props){
+    super(props)
+
+    this.state = {
+      loginUser: '',
+    }
+  }
   render(){
     return(
   <Grid textAlign='center' style={{ height: '65vh' }} verticalAlign='middle'>
@@ -10,25 +18,23 @@ export default class Login extends Component {
       <Header as='h2' textAlign='center'>
         <Icon name='ethereum' /> Log-in to your account
       </Header>
-      <Form size='large'>
-        <Segment stacked>
-          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
-          <Form.Input
-            fluid
-            icon='lock'
-            iconPosition='left'
-            placeholder='Password'
-            type='password'
-          />
-
-          <Button color='black' fluid size='large'>
-            Login
-          </Button>
-        </Segment>
-      </Form>
-      <Message>
-        New to us? <Button color='yellow'>Sign Up</Button>
-      </Message>
+      <form onSubmit={this.props.loginUser}>
+                <strong>Login </strong>
+                <label htmlFor="name">Username: </label>
+                <input type="text" id="name" name="username"/>
+                <label htmlFor="name">Password: </label>
+                <input type="text" id="password" name="password"/>
+                <input type="submit" value="login" />
+            </form>
+            OR
+            <form onSubmit={this.props.register}>
+                <strong>Register </strong>
+                <label htmlFor="name">Username: </label>
+                <input type="text" id="name" name="username"/>
+                <label htmlFor="name">Password: </label>
+                <input type="text" id="password" name="password"/>
+                <input type="submit" value="signup" />
+            </form>
     </Segment>
     </Grid.Column>
   </Grid> 

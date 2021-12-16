@@ -13,7 +13,8 @@ export default class HeaderMain extends Component{
   render(){
     const { activeItem } = this.state
 
-    return( 
+    return(
+    <Segment color='black' inverted style={{ margin: '-0.1em -0.1em 3em', padding: '2em 0em 0em' }}> 
   <Header as='h1' inverted>
     <Icon color='yellow' name='ethereum' />
     <Header.Content>NFT Base</Header.Content> {/*nft 'home base' idea*/}
@@ -57,15 +58,14 @@ export default class HeaderMain extends Component{
       as={NavLink}
       to="/login"
       name='Login'
-      content={<Icon color='yellow' size='large' name='user circle' />}
+      content={<Icon color='yellow' size='big' name='user circle' />}
       active={activeItem === 'login'}
       onClick={this.handleItemClick}
-        >
-        Login
-    </Menu.Item>
+    />
   </Menu>
   </Segment>
   </Header>
+  </Segment>
 )
 }
 }

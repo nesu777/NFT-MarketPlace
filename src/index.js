@@ -1,3 +1,4 @@
+import "./config" // Imports environment variables and configures FCL
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css'
