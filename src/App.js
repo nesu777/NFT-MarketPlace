@@ -32,9 +32,6 @@ class App extends Component {
       assets: [],
       modalOpen: false,
       asssetToBeEdited: {},
-      name:'',
-      creator:'',
-      price:'',
       userLoggedIn: false
     }
   }
@@ -143,7 +140,7 @@ class App extends Component {
       })
       .then(json => this.setState({
         searchResults: json,
-        gameTitle: ''
+        assetTitle: ''
       }),
       (err)=>console.log(err))
     })
@@ -246,8 +243,8 @@ class App extends Component {
     this.setState({
       modalOpen:true,
       name: asset.name,
-      creator: asset.creator,
       price: asset.price,
+      creator: asset.creator,
       assetToBeEdited: asset
     })
   }
@@ -270,10 +267,12 @@ class App extends Component {
                 return (
                   <Table.Row key={asset._id}>
                     <Table.Cell key={i}> {asset.name} </Table.Cell>
+                    <Table.Cell>{asset.price} ETH</Table.Cell>
+                    <Table.Cell>{asset.creator}</Table.Cell>
                     <Table.Cell>{asset.likes}</Table.Cell>
                     <Table.Cell onClick={() => { this.addLike(asset)}}>LIKE</Table.Cell>
                     <Table.Cell onClick={() => { this.showEditForm(asset)}}>Show Edit Form</Table.Cell>
-                    <Table.Cell onClick={() => this.deleteAsset(asset._id)}>X</Table.Cell>
+                    <Table.Cell onClick={() => this.deleteAsset(asset._id)}><Button color='red' inverted>Delete</Button></Table.Cell>
                   </Table.Row>
                 )
               })
@@ -286,14 +285,14 @@ class App extends Component {
 
             <Form onSubmit={this.handleSubmit}>
               <Label>Name: </Label>
-              <Input name="name" value={this.state.name} onChange={this.handleChange}/> <br/>
-
+              <Input name="name" value={this.state.name} onChange={this.handleChange}/> 
+              <br/>
               <Label>Creator: </Label>
               <Input name="creator" value={this.state.creator} onChange={this.handleChange}/>
-
+              <br/>
               <Label>Price: </Label>
               <Input name="price" value={this.state.price} onChange={this.handleChange}/>
-
+              <br/>
               <Button>Submit</Button>
 
             </Form>

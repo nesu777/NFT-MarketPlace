@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form, Label, Input } from 'semantic-ui-react'
 
 export default class NewForm extends Component {
   constructor(props) {
@@ -40,11 +41,15 @@ export default class NewForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="name">Name: </label>
-        <input type="text" id="name" name="name" onChange={ (e) => this.handleChange(e)} value={this.state.name} />
-        <input type="submit" value="Add NFT asset" />
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+        <Label htmlFor="name">Name: </Label>
+        <Input type="text" id="name" name="name" onChange={ (e) => this.handleChange(e)} value={this.state.name} />
+        <Label htmlFor="name">Creator: </Label>
+        <Input type="text" id="creator" name="creator" onChange={ (e) => this.handleChange(e)} value={this.state.creator} />
+        <Label htmlFor="name">Price: </Label>
+        <Input type="text" id="price" name="price" onChange={ (e) => this.handleChange(e)} value={this.state.price} />
+        <Input type="submit" value="Add NFT asset" />
+      </Form>
     )
   }
 
