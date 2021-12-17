@@ -126,25 +126,25 @@ class App extends Component {
     }
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-    this.setState({
-      requestOptions: {
-        method: 'GET',
-        redirect: 'follow'
-      }
-    }, () => {
-      fetch("https://flow-mainnet.g.alchemy.com/xlkp1n3yzg6xim4mwjr2byhpr0wirck7/v1/getNFTMetadata/?tokenId=" + this.state.gameTitle +"&limit=5", this.state.requestOptions)
-      .then(res => {
-        return res.json()
-      })
-      .then(json => this.setState({
-        searchResults: json,
-        assetTitle: ''
-      }),
-      (err)=>console.log(err))
-    })
-  }
+  // handleSubmit = (event) => {
+  //   event.preventDefault()
+  //   this.setState({
+  //     requestOptions: {
+  //       method: 'GET',
+  //       redirect: 'follow'
+  //     }
+  //   }, () => {
+  //     fetch("https://flow-mainnet.g.alchemy.com/xlkp1n3yzg6xim4mwjr2byhpr0wirck7/v1/getNFTMetadata/?tokenId=" + this.state.gameTitle +"&limit=5", this.state.requestOptions)
+  //     .then(res => {
+  //       return res.json()
+  //     })
+  //     .then(json => this.setState({
+  //       searchResults: json,
+  //       assetTitle: ''
+  //     }),
+  //     (err)=>console.log(err))
+  //   })
+  // }
 
     // getData = (data) => {
     //   console.log('setting state')
@@ -208,7 +208,8 @@ class App extends Component {
         method: 'PUT',
         body: JSON.stringify({
           name: e.target.name.value,
-          creator: e.target.creator.value
+          creator: e.target.creator.value,
+          price: e.target.price.value
         }),
         headers: {
           'Content-Type' : 'application/json'
