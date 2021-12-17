@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Table, Label, Form, Input, Button } from 'semantic-ui-react'
 import HeaderMain from './components/Header'
 import NewForm from './components/NewForm'
-// import AssetList from './components/AssetList'
+import AssetList from './components/AssetList'
 import Footer from './components/Footer'
 import HomePage from './components/HomePage'
 import Featured from './components/Featured'
@@ -11,7 +11,7 @@ import AllAssets from './components/AllAssets'
 import AboutUs from './components/AboutUs'
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 let baseUrl = process.env.REACT_APP_BASEURL
 
@@ -254,53 +254,56 @@ class App extends Component {
     this.getAssets()
   }
 
+  // AssetList = () =>{
+  //     <div className='ui container'>
+  //     <Table>
+  //         <Table.Body>
+  //           { 
+  //             this.state.assets.map((asset, i) => {
+  //               return (
+  //                 <Table.Row key={asset._id}>
+  //                   <Table.Cell key={i}> {asset.name} </Table.Cell>
+  //                   <Table.Cell>{asset.price} ETH</Table.Cell>
+  //                   <Table.Cell>{asset.creator}</Table.Cell>
+  //                   <Table.Cell>{asset.likes}</Table.Cell>
+  //                   <Table.Cell onClick={() => { this.props.addLike(asset)}}>LIKE</Table.Cell>
+  //                   <Table.Cell onClick={() => { this.props.showEditForm(asset)}}>Show Edit Form</Table.Cell>
+  //                   <Table.Cell onClick={() => this.props.deleteAsset(asset._id)}><Button color='red' inverted>Delete</Button></Table.Cell>
+  //                 </Table.Row>
+  //               )
+  //             })
+  //           }
+  //         </Table.Body>
+  //       </Table>
+  //       <br/>
+  //       {
+  //           this.state.modalOpen &&
+
+  //           <Form onSubmit={this.handleSubmit}>
+  //             <Label>Name: </Label>
+  //             <Input name="name" value={this.state.name} onChange={this.handleChange}/> 
+  //             <br/>
+  //             <Label>Creator: </Label>
+  //             <Input name="creator" value={this.state.creator} onChange={this.handleChange}/>
+  //             <br/>
+  //             <Label>Price: </Label>
+  //             <Input name="price" value={this.state.price} onChange={this.handleChange}/>
+  //             <br/>
+  //             <Button>Submit</Button>
+
+  //           </Form>
+  //         }
+  //     </div>
+  //   }
 
   render() {
     return (
       <>  
       <div className='mainContainer'>
-      <NewForm baseUrl={baseUrl} addAsset={ this.addAsset }/>
-      <div className='ui container'>
-      <Table>
-          <Table.Body>
-            { 
-              this.state.assets.map((asset, i) => {
-                return (
-                  <Table.Row key={asset._id}>
-                    <Table.Cell key={i}> {asset.name} </Table.Cell>
-                    <Table.Cell>{asset.price} ETH</Table.Cell>
-                    <Table.Cell>{asset.creator}</Table.Cell>
-                    <Table.Cell>{asset.likes}</Table.Cell>
-                    <Table.Cell onClick={() => { this.addLike(asset)}}>LIKE</Table.Cell>
-                    <Table.Cell onClick={() => { this.showEditForm(asset)}}>Show Edit Form</Table.Cell>
-                    <Table.Cell onClick={() => this.deleteAsset(asset._id)}><Button color='red' inverted>Delete</Button></Table.Cell>
-                  </Table.Row>
-                )
-              })
-            }
-          </Table.Body>
-        </Table>
-        <br/>
-        {
-            this.state.modalOpen &&
-
-            <Form onSubmit={this.handleSubmit}>
-              <Label>Name: </Label>
-              <Input name="name" value={this.state.name} onChange={this.handleChange}/> 
-              <br/>
-              <Label>Creator: </Label>
-              <Input name="creator" value={this.state.creator} onChange={this.handleChange}/>
-              <br/>
-              <Label>Price: </Label>
-              <Input name="price" value={this.state.price} onChange={this.handleChange}/>
-              <br/>
-              <Button>Submit</Button>
-
-            </Form>
-          }
-      </div>
-      {/*<AssetList />*/}
-        <Router>
+      
+      
+{/*        <AssetList assets={this.state.assets} addLike={this.addLike} deleteAsset={this.deleteAsset} showEditForm={this.showEditForm} modalOpen={this.state.modalOpen} showEditForm={this.showEditForm}/>
+*/}        <Router>
         <div className='ui segment main' style={{ margin: '0em 0em 0em', padding: '0em 0em 0em' }}>
         <HeaderMain />
         <Routes>
@@ -311,9 +314,15 @@ class App extends Component {
         />
 
         <Route
-          path="/allassets"
+          path="/newasset"
           element={
-          <AllAssets />}
+          <NewForm baseUrl={baseUrl} addAsset={ this.addAsset }/>}
+        />    
+
+        <Route
+          path="/allassets" 
+          element={
+          <AssetList assets={this.state.assets} addLike={this.addLike} deleteAsset={this.deleteAsset} showEditForm={this.showEditForm} modalOpen={this.state.modalOpen} showEditForm={this.showEditForm} handleSubmit={this.handleSubmit} assetToBeEdited={this.state.assetToBeEdited}/>} 
         />
 
         <Route

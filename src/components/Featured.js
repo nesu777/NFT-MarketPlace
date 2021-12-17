@@ -14,9 +14,9 @@ render(){
       			<Item.Content>
       				<Segment raised inverted padded='very'>
         			<Item.Header as='h1'><Icon name='ethereum' color='yellow'/>Imperial Astronaut</Item.Header>
-        			<Item.Image centered src='astronaut_nft.png' size='huge' fluid/>
-        			<Item.Header as='h2' color='blue'>27 WETH ($103,321) for 1 edition
-        			<Item.Header as='h3'>Creator: Beeple</Item.Header>
+        			<Item.Image centered src='astronaut_nft.png' size='huge'/>
+        			<Item.Header as='h1' color='blue'>27 WETH ($103,321) for 1 edition
+        			<Item.Content style={{ fontSize: '0.7em' }}>Creator: Beeple</Item.Content>
         			<br/>
         			<Button color='yellow' inverted>Bid</Button>
         			<Button className='ui tertiary button'>Watch Bid <Icon name='star' color='yellow' /></Button>
