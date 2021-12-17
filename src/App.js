@@ -151,7 +151,8 @@ class App extends Component {
         body: JSON.stringify({
           name: e.target.name.value,
           creator: e.target.creator.value,
-          price: e.target.price.value
+          price: e.target.price.value,
+          img: e.target.img.value
         }),
         headers: {
           'Content-Type' : 'application/json'
@@ -188,6 +189,7 @@ class App extends Component {
       name: asset.name,
       price: asset.price,
       creator: asset.creator,
+      img: asset.img,
       assetToBeEdited: asset
     })
   }
@@ -219,7 +221,7 @@ class App extends Component {
         <Route
           path="/allassets" 
           element={
-          <AssetList assets={this.state.assets} editName={this.state.name} editPrice={this.state.price} editCreator={this.state.creator} addLike={this.addLike} deleteAsset={this.deleteAsset} editHandleSubmit={this.handleSubmit} editHandleChange={this.handleChange} modalOpen={this.state.modalOpen} showEditForm={this.showEditForm} assetToBeEdited={this.state.assetToBeEdited}/>} 
+          <AssetList assets={this.state.assets} editName={this.state.name} editPrice={this.state.price} editCreator={this.state.creator} editImg={this.state.img} addLike={this.addLike} deleteAsset={this.deleteAsset} editHandleSubmit={this.handleSubmit} editHandleChange={this.handleChange} modalOpen={this.state.modalOpen} showEditForm={this.showEditForm} assetToBeEdited={this.state.assetToBeEdited}/>} 
         />
 
         <Route

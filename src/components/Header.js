@@ -19,7 +19,7 @@ export default class HeaderMain extends Component{
     <Icon color='yellow' name='ethereum' />
     <Header.Content>NFT Base</Header.Content> {/*nft 'home base' idea*/}
   <Segment inverted>
-  <Menu fluid widths={7} inverted pointing secondary>
+  <Menu fluid widths={8} inverted pointing secondary>
     <Menu.Item
       as={NavLink} to="/home"
       name='Home'
@@ -52,6 +52,13 @@ export default class HeaderMain extends Component{
       to="/dashboard"
       name='Dashboard'
       active={activeItem === 'dashboard'}
+      onClick={this.handleItemClick}
+    />
+    <Menu.Item 
+      as={NavLink}
+      to="/newasset"
+      name='New Asset'
+      active={activeItem === 'newasset'}
       onClick={this.handleItemClick}
     />
     <Menu.Item 

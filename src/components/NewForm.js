@@ -48,6 +48,8 @@ export default class NewForm extends Component {
         <Input type="text" id="creator" name="creator" onChange={ (e) => this.handleChange(e)} value={this.state.creator} />
         <Label htmlFor="name">Price: </Label>
         <Input type="text" id="price" name="price" onChange={ (e) => this.handleChange(e)} value={this.state.price} />
+        <Label htmlFor="image">Img: </Label>
+        <Input type="text" id="img" name="img" onChange={ (e) => this.handleChange(e)} value={this.state.img} />
         <Input type="submit" value="Add NFT asset" />
       </Form>
     )

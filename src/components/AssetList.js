@@ -33,6 +33,7 @@ export default class AssetList extends Component {
                     <Table.Cell>{asset.price} ETH</Table.Cell>
                     <Table.Cell>{asset.creator}</Table.Cell>
                     <Table.Cell>{asset.likes}</Table.Cell>
+                    <Table.Cell>{asset.img}</Table.Cell>
                     <Table.Cell onClick={() => { this.props.addLike(asset)}}>LIKE</Table.Cell>
                     <Table.Cell onClick={() => { this.props.showEditForm(asset)}}><Button color='yellow' inverted>Show Edit Form</Button></Table.Cell>
                     <Table.Cell onClick={() => this.props.deleteAsset(asset._id)}><Button color='red' inverted>Delete</Button></Table.Cell>
@@ -42,23 +43,6 @@ export default class AssetList extends Component {
             }
           </Table.Body>
         </Table>
-        {/*<br/>
-          {
-            this.props.modalOpen && 
-            <Form onSubmit={this.props.editHandleSubmit}>
-              <Label>Name: </Label>
-              <Input name="name" placeholder={this.props.editName} value={this.props.name} onChange={this.handleChange}/> 
-              <br/>
-              <Label>Creator: </Label>
-              <Input name="creator" placeholder={this.props.editCreator} value={this.props.creator} onChange={this.handleChange}/>
-              <br/>
-              <Label>Price: </Label>
-              <Input name="price" placeholder={this.props.editPrice} value={this.props.price} onChange={this.handleChange}/>
-              <br/>
-              <Button>Submit</Button>
-            </Form>
-            // this.modalOpen && <EditModal showEditForm={this.showEditForm} asset={this.state.asset}/>
-          }*/}
       </div>
     )
   }
