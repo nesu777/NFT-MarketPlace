@@ -1,53 +1,28 @@
 import React, { Component } from 'react'
-import EditModal from './EditModal'
+// import EditModal from './EditModal'
 import { Table, Label, Form, Input, Button } from 'semantic-ui-react'
 
 export default class AssetList extends Component {
-  constructor(props){
-    super(props)
-
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleSubmit = async (e) => {
-
-    const baseUrl = process.env.REACT_APP_BASEURL
-
-    e.preventDefault()
-    const url = baseUrl + '/assets/' + this.props.assetToBeEdited._id
-    try{
-      const response = await fetch( url , {
-        method: 'PUT',
-        body: JSON.stringify({
-          name: e.target.name.value,
-          creator: e.target.creator.value,
-          price: e.target.price.value
-        }),
-        headers: {
-          'Content-Type' : 'application/json'
-        },
-        credentials: "include"
-      })
-
-      if (response.status === 200){
-        const updatedAsset = await response.json()
-        console.log(updatedAsset)
-        const findIndex = this.props.assets.findIndex(asset => asset._id === updatedAsset._id)
-        const copyAssets = [...this.props.assets]
-        copyAssets[findIndex] = updatedAsset
-        this.setState({
-          assets: copyAssets,
-          modalOpen:false
-        })
-      }
-    }
-    catch(err){
-      console.log('Error => ', err);
-    }
-  }
   render(){
     return(
       <div className='ui container'>
+          {
+            this.props.modalOpen && 
+            <Form onSubmit={this.props.editHandleSubmit}>
+              <Label>Name: </Label>
+              <Input name="name" placeholder={this.props.editName} value={this.props.editName} onChange={this.props.editHandleChange}/> 
+              <br/>
+              <Label>Creator: </Label>
+              <Input name="creator" placeholder={this.props.editCreator} value={this.props.editCreator} onChange={this.props.editHandleChange}/>
+              <br/>
+              <Label>Price: </Label>
+              <Input name="price" placeholder={this.props.editPrice} value={this.props.editPrice} onChange={this.props.editHandleChange}/>
+              <br/>
+              <Button>Submit</Button>
+            </Form>
+            // this.modalOpen && <EditModal showEditForm={this.showEditForm} asset={this.state.asset}/>
+          }
+          <br/>
       <Table>
           <Table.Body>
             { 
@@ -67,23 +42,23 @@ export default class AssetList extends Component {
             }
           </Table.Body>
         </Table>
-        <br/>
+        {/*<br/>
           {
             this.props.modalOpen && 
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.props.editHandleSubmit}>
               <Label>Name: </Label>
-              <Input name="name" placeholder={this.props.name} value={this.props.name} onChange={this.handleChange}/> 
+              <Input name="name" placeholder={this.props.editName} value={this.props.name} onChange={this.handleChange}/> 
               <br/>
               <Label>Creator: </Label>
-              <Input name="creator" placeholder={this.props.creator} value={this.props.creator} onChange={this.handleChange}/>
+              <Input name="creator" placeholder={this.props.editCreator} value={this.props.creator} onChange={this.handleChange}/>
               <br/>
               <Label>Price: </Label>
-              <Input name="price" placeholder={this.props.price} value={this.props.price} onChange={this.handleChange}/>
+              <Input name="price" placeholder={this.props.editPrice} value={this.props.price} onChange={this.handleChange}/>
               <br/>
               <Button>Submit</Button>
             </Form>
             // this.modalOpen && <EditModal showEditForm={this.showEditForm} asset={this.state.asset}/>
-          }
+          }*/}
       </div>
     )
   }
