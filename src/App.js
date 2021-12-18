@@ -98,6 +98,29 @@ class App extends Component {
     }
   }
 
+  // logout = async (e) => {
+  //   e.preventDefault()
+  //   const url = baseUrl + '/users/logout'
+  //   try {
+  //     const response = await fetch(url, {
+  //       method: 'DELETE',
+  //       body: JSON.stringify({
+  //         username: e.target.username.value,
+  //         password: e.target.password.value
+  //       }),
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       }
+  //     })
+  //     if (response.status === 200) {
+  //       this.getAssets()
+  //     }
+  //   }
+  //   catch (err) {
+  //     console.log('Error => ', err);
+  //   }
+  // }
+
   addAsset = (newAsset) => {
     const copyAssets = [...this.state.assets]
     copyAssets.push(newAsset)
@@ -245,7 +268,7 @@ class App extends Component {
         <Route
           path="/login"
           element={
-          <Login register={this.register} loginUser={this.loginUser} />}
+          <Login register={this.register} loginUser={this.loginUser} logout={this.logout} />}
         />
       </Routes>
       <Footer />

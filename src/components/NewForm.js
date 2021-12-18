@@ -6,7 +6,10 @@ export default class NewForm extends Component {
     super(props)
 
     this.state = {
-      name:''
+      name:'',
+      creator:'',
+      price:'',
+      img:''
     }
   }
 
@@ -22,7 +25,7 @@ export default class NewForm extends Component {
     // fetch
     fetch(this.props.baseUrl + '/assets', {
       method: 'POST',
-      body: JSON.stringify({name: this.state.name}),
+      body: JSON.stringify({name: this.state.name, creator: this.state.creator, price: this.state.price, img: this.state.img}),
       headers: {
         'Content-Type': 'application/json'
       },
@@ -33,7 +36,10 @@ export default class NewForm extends Component {
       // console.log(data)
       this.props.addAsset(data)
       this.setState({
-        name: ''
+        name: '',
+        creator:'',
+        price:'',
+        img:''
       })
     }).catch (error => console.error({'Error': error}))
   }
