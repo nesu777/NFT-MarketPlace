@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Item, Container, Divider, Segment, Icon, Header} from 'semantic-ui-react'
+import { Card, Item, Container, Divider, Segment, Icon, Header} from 'semantic-ui-react'
 
 //Show Page Component
 
@@ -10,6 +10,8 @@ render(){
 			<Segment padded='very' inverted>
 			{/*<br/><br/>*/}
 			<Header align='center' as='h1' style={{ fontSize: '3em', padding: '1em 0em' }}>Featured Art</Header>
+			<Card fluid wrapped ui={false}>
+			<Card.Content>
 			<Item key='{asset.id}'>
       			<Item.Content>
       				<Segment raised inverted padded='very'>
@@ -29,6 +31,8 @@ render(){
         			</Segment>
       			</Item.Content>
     		</Item>
+    		</Card.Content>
+    		</Card>
     		</Segment>
     		</Container>
 			)
