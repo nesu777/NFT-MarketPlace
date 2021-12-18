@@ -245,7 +245,7 @@ class App extends Component {
         <Route
           path="/login"
           element={
-          <Login />}
+          <Login register={this.register} loginUser={this.loginUser} />}
         />
       </Routes>
       <Footer />
