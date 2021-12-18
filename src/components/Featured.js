@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Item, Container, Divider, Segment, Icon, Button, Header} from 'semantic-ui-react'
+import { Item, Container, Divider, Segment, Icon, Header} from 'semantic-ui-react'
 
 //Show Page Component
 
@@ -15,19 +15,18 @@ render(){
       				<Segment raised inverted padded='very'>
         			<Item.Header as='h1'><Icon name='ethereum' color='yellow'/>Imperial Astronaut</Item.Header>
         			<Item.Image centered src='astronaut_nft.png' size='huge'/>
-        			<Item.Header as='h1' color='blue'>27 WETH ($103,321) for 1 edition
-        			<Item.Content style={{ fontSize: '0.7em' }}>Creator: Beeple</Item.Content>
+        			<Item.Header as='h1' color='blue'>74 ETH for 1 edition
+        			<Item.Content style={{ fontSize: '0.7em' }}>Creator: DaVinci123</Item.Content>
         			<br/>
-        			<Button color='yellow' inverted>Bid</Button>
-        			<Button className='ui tertiary button'>Watch Bid <Icon name='star' color='yellow' /></Button>
+        			<Item.Description style={{ fontSize: '0.7em' }}>
+        				Astronaut floating in imperial space was inspired by events that I experienced when travelling to remote French Polynesian islands and investigating the use of celestial mechanics for navigation.
+							"Watch out for the ghost planet!" the film's trailer says. It's part of a recurring pattern throughout the three films, in which his narrator is drunk and runs around with a laser pointer in a trance.
+								None of the standard models for space navigation
+          			</Item.Description>
         			<br/><br/>
         			</Item.Header>
         			<Divider />
-        			<Item.Meta as='h3'>(11) <Icon name='heart' color='red'/><strong>Likes</strong></Item.Meta>
-        			<Item.Description>
-          			</Item.Description>
         			</Segment>
-        			{/*<br/>*/}
       			</Item.Content>
     		</Item>
     		</Segment>

@@ -3,11 +3,11 @@ import React, { Component } from 'react'
 // import { Table, Label, Form, Input, Button } from 'semantic-ui-react'
 import HeaderMain from './components/Header'
 import NewForm from './components/NewForm'
-import AssetList from './components/AssetList'
+// import AssetList from './components/AssetList'
 import Footer from './components/Footer'
 import HomePage from './components/HomePage'
 import Featured from './components/Featured'
-// import AllAssets from './components/AllAssets'
+import AllAssets from './components/AllAssets'
 import AboutUs from './components/AboutUs'
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
@@ -76,6 +76,7 @@ class App extends Component {
   }
 
   register = async (e) => {
+    console.log('register')
     e.preventDefault()
     const url = baseUrl + '/users/signup'
     try {
@@ -241,10 +242,16 @@ class App extends Component {
           <NewForm baseUrl={baseUrl} addAsset={ this.addAsset }/>}
         />    
 
-        <Route
+        {/*<Route
           path="/allassets" 
           element={
           <AssetList assets={this.state.assets} editName={this.state.name} editPrice={this.state.price} editCreator={this.state.creator} editImg={this.state.img} addLike={this.addLike} deleteAsset={this.deleteAsset} editHandleSubmit={this.handleSubmit} editHandleChange={this.handleChange} modalOpen={this.state.modalOpen} showEditForm={this.showEditForm} assetToBeEdited={this.state.assetToBeEdited}/>} 
+        />*/}
+
+        <Route
+          path="/allassets" 
+          element={
+          <AllAssets assets={this.state.assets} editName={this.state.name} editPrice={this.state.price} editCreator={this.state.creator} editImg={this.state.img} addLike={this.addLike} deleteAsset={this.deleteAsset} editHandleSubmit={this.handleSubmit} editHandleChange={this.handleChange} modalOpen={this.state.modalOpen} showEditForm={this.showEditForm} assetToBeEdited={this.state.assetToBeEdited}/>} 
         />
 
         <Route

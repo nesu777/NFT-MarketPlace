@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Table, Image, Button, Header, Segment, Icon, Form, Label, Input } from 'semantic-ui-react'
-
+import { Card, Image, Button, Header, Segment, Icon, Form, Label, Input } from 'semantic-ui-react'
 // const src = 'logo192.png'
 
 export default class AllAssets extends Component {
@@ -8,46 +7,39 @@ export default class AllAssets extends Component {
     return (
 
     <Segment inverted style={{ padding: '2em 8em', margin: '0em 11.2em' }}>
-      {
+      
+      <Header align='left' as='h1' style={{ fontSize: '3em', padding: '1em 0em' }}>Explore</Header>
+          {/*{
             this.props.modalOpen && 
-            <Form onSubmit={this.props.allHandleSubmit}>
+            <Form onSubmit={this.props.editHandleSubmit}>
               <Label>Name: </Label>
-              <Input name="name" placeholder={this.props.allName} value={this.props.allName} onChange={this.props.allHandleChange}/> 
+              <Input name="name" placeholder={this.props.editName} value={this.props.editName} onChange={this.props.editHandleChange}/> 
               <br/>
               <Label>Creator: </Label>
-              <Input name="creator" placeholder={this.props.allCreator} value={this.props.allCreator} onChange={this.props.allHandleChange}/>
+              <Input name="creator" placeholder={this.props.editCreator} value={this.props.editCreator} onChange={this.props.editHandleChange}/>
               <br/>
               <Label>Price: </Label>
-              <Input name="price" placeholder={this.props.allPrice} value={this.props.allPrice} onChange={this.props.allHandleChange}/>
+              <Input name="price" placeholder={this.props.editPrice} value={this.props.editPrice} onChange={this.props.editHandleChange}/>
               <br/>
               <Label>Image: </Label>
-              <Input name="price" placeholder={this.props.allImage} value={this.props.allImage} onChange={this.props.allHandleChange}/>
+              <Input name="img" placeholder={this.props.editImg} value={this.props.editImg} onChange={this.props.editHandleChange}/>
               <br/>
               <Button>Submit</Button>
             </Form>
             // this.modalOpen && <EditModal showEditForm={this.showEditForm} asset={this.state.asset}/>
-          }
-          <br/>
-      <Header align='center' as='h1' style={{ fontSize: '3em', padding: '1em 0em' }}>All Assets</Header>
-      <Table celled>
-      <Table.Header>
-      <Table.Row>
-        <Table.HeaderCell>1</Table.HeaderCell>
-        <Table.HeaderCell>All NFT Assets</Table.HeaderCell>
-        <Table.HeaderCell>3</Table.HeaderCell>
-      </Table.Row>
-      </Table.Header>
-          <Table.Body>
-          <Table.Row>
+          }*/}
+          <Card.Group itemsPerRow={3}>
             { 
               this.props.assets.map((asset, i) => {
-                return (
-            <Table.Cell key={asset._id}>      
-            <Card.Group>
-            <Card>
-              <Image src={asset.image} wrapped ui={false} />
+                return ( 
+            <Card key={asset._id}>
+              <Image src={asset.img} size='medium' wrapped ui={false}/>
               <Card.Content>
-              <Card.Header>{asset.price}ETH <Icon name='ethereum'/></Card.Header>
+              <Card.Header>{asset.price }ETH<Icon name='ethereum'/></Card.Header>
+              <Card.Meta>
+              {/*<span>(Live conversion: ${((asset.price * 3957.10)  * Math.floor(10 * Math.random())).toFixed(2)})</span>*/}
+              <span>(USD value: ${(asset.price * 3957.11).toFixed(2)})</span>
+              </Card.Meta>
               <Card.Meta>
               <span>{asset.creator}</span>
               </Card.Meta>
@@ -56,21 +48,37 @@ export default class AllAssets extends Component {
             </Card.Description>
               </Card.Content>
             <Card.Content extra>
-              <Button size='big' color='yellow'>Bid</Button>
-              <Button size='big' color='black'>Wish List</Button>
-              <Table.Cell onClick={() => { this.props.addLike(asset)}}>LIKE</Table.Cell>
-                    <Table.Cell onClick={() => { this.props.showEditForm(asset)}}><Button color='yellow' inverted>Show Edit Form</Button></Table.Cell>
-                    <Table.Cell onClick={() => this.props.deleteAsset(asset._id)}><Button color='red' inverted>Delete</Button></Table.Cell>
+              <span>{asset.likes}</span>
+              <Icon onClick={() => { this.props.addLike(asset)}} name='heart outline' color='red' size='big'/>
+              <Button size='medium' color='yellow' inverted>Buy</Button>   
+              <br/><br/>
+              <Button onClick={() => { this.props.showEditForm(asset)}} color='blue' inverted>Edit</Button>
+              <Button onClick={() => this.props.deleteAsset(asset._id)} color='red' inverted>Delete</Button>
+              {
+            this.props.modalOpen && 
+            <Form onSubmit={this.props.editHandleSubmit}>
+              <Label>Name: </Label>
+              <Input name="name" placeholder={this.props.editName} value={this.props.editName} onChange={this.props.editHandleChange}/> 
+              <br/>
+              <Label>Creator: </Label>
+              <Input name="creator" placeholder={this.props.editCreator} value={this.props.editCreator} onChange={this.props.editHandleChange}/>
+              <br/>
+              <Label>Price: </Label>
+              <Input name="price" placeholder={this.props.editPrice} value={this.props.editPrice} onChange={this.props.editHandleChange}/>
+              <br/>
+              <Label>Image: </Label>
+              <Input name="img" placeholder={this.props.editImg} value={this.props.editImg} onChange={this.props.editHandleChange}/>
+              <br/>
+              <Button>Submit</Button>
+            </Form>
+            // this.modalOpen && <EditModal showEditForm={this.showEditForm} asset={this.state.asset}/>
+          }
             </Card.Content>
             </Card>
-            </Card.Group>
-            </Table.Cell>
               )
             })
-          }  
-        </Table.Row>    
-        </Table.Body>      
-    </Table>
+          }
+      </Card.Group>        
     </Segment>
     )
   }

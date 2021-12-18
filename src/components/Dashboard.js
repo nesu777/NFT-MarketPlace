@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Card, Grid, List, Image, Button, Header, Segment, Icon} from 'semantic-ui-react'
+import { Card, Grid, List, Image, Button, Header, Segment, Icon } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 
 export default class Dashboard extends Component {
   render() {
@@ -18,7 +19,7 @@ export default class Dashboard extends Component {
             <List style={{ fontSize: '1.5em' }}>
               <List.Item>
                 <List.Icon name='user' />
-                <List.Content>Name: 'user'</List.Content>
+                <List.Content>Name: John</List.Content>
               </List.Item>
               <List.Item>
                 <List.Icon name='users' />
@@ -66,8 +67,8 @@ export default class Dashboard extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column textAlign='center'>
-            <Button size='huge' color='black'>Add Digital Asset</Button>
-            <Button size='huge' color='yellow'>Logout</Button>
+            <Button size='huge' color='black' as={NavLink} to="/newasset">Add Digital Asset</Button>
+            <Button size='huge' color='yellow' as={NavLink} to="/home">Logout</Button>
             <br/>
             <br/>
           </Grid.Column>
