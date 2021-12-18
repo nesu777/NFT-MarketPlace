@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Image, Button, Header, Segment, Icon, Form, Label, Input, Grid } from 'semantic-ui-react'
+import { Card, Image, Button, Header, Segment, Icon, Form, Label, Input } from 'semantic-ui-react'
 // const src = 'logo192.png'
 
 export default class AllAssets extends Component {
@@ -9,53 +9,6 @@ export default class AllAssets extends Component {
     <Segment inverted style={{ padding: '2em 8em', margin: '0em 11.2em' }}>
       
       <Header align='left' as='h1' style={{ fontSize: '3em', padding: '1em 0em' }}>Explore</Header>
-          {/*{
-            this.props.modalOpen && 
-            <Form onSubmit={this.props.editHandleSubmit}>
-              <Label>Name: </Label>
-              <Input name="name" placeholder={this.props.editName} value={this.props.editName} onChange={this.props.editHandleChange}/> 
-              <br/>
-              <Label>Creator: </Label>
-              <Input name="creator" placeholder={this.props.editCreator} value={this.props.editCreator} onChange={this.props.editHandleChange}/>
-              <br/>
-              <Label>Price: </Label>
-              <Input name="price" placeholder={this.props.editPrice} value={this.props.editPrice} onChange={this.props.editHandleChange}/>
-              <br/>
-              <Label>Image: </Label>
-              <Input name="img" placeholder={this.props.editImg} value={this.props.editImg} onChange={this.props.editHandleChange}/>
-              <br/>
-              <Button>Submit</Button>
-            </Form>
-            // this.modalOpen && <EditModal showEditForm={this.showEditForm} asset={this.state.asset}/>
-          }*/}
-
-          {
-            this.props.modalOpen &&
-            <Grid textAlign='center' style={{ height: '65vh', margin: '0em 0em 0em' }} verticalAlign='middle'>
-            <Grid.Column style={{ maxWidth: 550 }}>
-            {/*<Segment inverted>*/}
-            <Segment padded='very'> 
-            <Form onSubmit={this.props.editHandleSubmit}>
-              <Label>Name: </Label>
-              <Input name="name" placeholder={this.props.editName} value={this.props.editName} onChange={this.props.editHandleChange}/> 
-              <br/>
-              <Label>Creator: </Label>
-              <Input name="creator" placeholder={this.props.editCreator} value={this.props.editCreator} onChange={this.props.editHandleChange}/>
-              <br/>
-              <Label>Price: </Label>
-              <Input name="price" placeholder={this.props.editPrice} value={this.props.editPrice} onChange={this.props.editHandleChange}/>
-              <br/>
-              <Label>Image: </Label>
-              <Input name="img" placeholder={this.props.editImg} value={this.props.editImg} onChange={this.props.editHandleChange}/>
-              <br/>
-              <Button>Submit</Button>
-            </Form>
-            </Segment>
-            {/*</Segment>*/}
-            </Grid.Column>
-            </Grid>
-            // this.modalOpen && <EditModal showEditForm={this.showEditForm} asset={this.state.asset}/>
-          }
           <Card.Group itemsPerRow={3}>
             { 
               this.props.assets.map((asset, i) => {
@@ -82,6 +35,25 @@ export default class AllAssets extends Component {
               <br/><br/>
               <Button onClick={() => { this.props.showEditForm(asset)}} color='blue' inverted>Edit</Button>
               <Button onClick={() => this.props.deleteAsset(asset._id)} color='red' inverted>Delete</Button>
+              {
+            this.props.modalOpen && 
+            <Form onSubmit={this.props.editHandleSubmit}>
+              <Label>Name: </Label>
+              <Input name="name" placeholder={this.props.editName} value={this.props.editName} onChange={this.props.editHandleChange}/> 
+              <br/>
+              <Label>Creator: </Label>
+              <Input name="creator" placeholder={this.props.editCreator} value={this.props.editCreator} onChange={this.props.editHandleChange}/>
+              <br/>
+              <Label>Price: </Label>
+              <Input name="price" placeholder={this.props.editPrice} value={this.props.editPrice} onChange={this.props.editHandleChange}/>
+              <br/>
+              <Label>Image: </Label>
+              <Input name="img" placeholder={this.props.editImg} value={this.props.editImg} onChange={this.props.editHandleChange}/>
+              <br/>
+              <Button>Submit</Button>
+            </Form>
+            // this.modalOpen && <EditModal showEditForm={this.showEditForm} asset={this.state.asset}/>
+          }
             </Card.Content>
             </Card>
               )
