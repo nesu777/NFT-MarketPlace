@@ -1,6 +1,8 @@
 ## NFT-MarketPlace
 A marketplace app exclusively for buying and selling digital products such as photos, videos, audio, and other file formats with non-fungible tokens (NFTs).
 
+https://nft-market-app.herokuapp.com/home
+
 ## Project Description
 > Include: React App with Semantic UI, MongoDB<br />
 > Product models will include author, product type, year created, token value, description, and availability<br />
